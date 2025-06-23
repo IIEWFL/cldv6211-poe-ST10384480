@@ -1,0 +1,44 @@
+﻿@model EventVenueBookingSystem.Models.ViewModels.BookingViewModel
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<h2>Edit Booking</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label"></label>
+        <select asp-for="UserName" asp-items="ViewBag.Users" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventId1" class="control-label"></label>
+        <select asp-for="EventId1" asp-items="ViewBag.Events" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VenueId1" class="control-label"></label>
+        <select asp-for="VenueId1" asp-items="ViewBag.Venues" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BookingDate" class="control-label"></label>
+        <input asp-for="BookingDate" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TimeSlot" class="control-label"></label>
+        <select asp-for="TimeSlot" class="form-control">
+            <option value="">-- Select Time Slot --</option>
+            <option value="Morning" selected="@("Morning" == Model.TimeSlot)">Morning</option>
+            <option value="Afternoon" selected="@("Afternoon" == Model.TimeSlot)">Afternoon</option>
+            <option value="Evening" selected="@("Evening" == Model.TimeSlot)">Evening</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

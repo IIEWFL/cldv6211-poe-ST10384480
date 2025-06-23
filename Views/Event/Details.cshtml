@@ -1,0 +1,32 @@
+﻿@model EventVenueBookingSystem.Models.ViewModels.BookingViewModel
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<h2>Booking Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">User Name</dt>
+            <dd class="col-sm-9">@Model.UserName</dd>
+
+            <dt class="col-sm-3">Event Name</dt>
+            <dd class="col-sm-9">@Model.EventName</dd>
+
+            <dt class="col-sm-3">Venue</dt>
+            <dd class="col-sm-9">@Model.VenueName</dd>
+
+            <dt class="col-sm-3">Event Type</dt>
+            <dd class="col-sm-9">@Model.EventType</dd>
+
+            <dt class="col-sm-3">Date</dt>
+            <dd class="col-sm-9">@Model.BookingDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">Time Slot</dt>
+            <dd class="col-sm-9">@Model.TimeSlot</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</div>

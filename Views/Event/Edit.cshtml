@@ -1,0 +1,59 @@
+﻿@model EventVenueBookingSystem.Models.ViewModels.BookingViewModel
+@{
+
+    ViewData["Title"] = "Edit Booking";
+}
+
+<h2>Edit Booking</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EventId1"></label>
+        <select asp-for="EventId1" asp-items="Model.Events" class="form-control"></select>
+        <span asp-validation-for="EventId1" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VenueId1"></label>
+        <select asp-for="VenueId1" asp-items="Model.Venues" class="form-control"></select>
+        <span asp-validation-for="VenueId1" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BookingDate"></label>
+        <input asp-for="BookingDate" class="form-control" type="date" />
+        <span asp-validation-for="BookingDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TimeSlot"></label>
+        <input asp-for="TimeSlot" class="form-control" placeholder="e.g. 10:00 - 12:00" />
+        <span asp-validation-for="TimeSlot" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
